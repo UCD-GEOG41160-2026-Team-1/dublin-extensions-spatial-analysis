@@ -1,0 +1,11 @@
+# Raw national datasets
+data/planning/*.gpkg
+data/boundaries/*.gpkg
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+
