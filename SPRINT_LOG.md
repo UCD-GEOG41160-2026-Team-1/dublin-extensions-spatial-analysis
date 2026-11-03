@@ -13,3 +13,19 @@ Discussed and assigned initial roles for the upcoming sprints.
 
 What is next (Sprint 1):
 Begin working on Question 1: Setting up the DuckDB spatial database, importing the data, and calculating extension density by ED.
+
+## Sprint 2-Global Spatial Autocorrelation
+Date:2026-11-03
+Coordinator:Fress-code
+
+## Coordinator Responsibilities
+1.Review the progress and outputs from Sprint 1.
+2.Confirm that the question 1 extension density Geopackage is available.
+3.Coordinate the completion of Question 2.
+4.Review team contributions and GitHub commits during today's coordination session.
+5.Update the sprint log with progress, issues, and next steps.
+
+## Issues and Dependencies
+
+1.Question 1 script is available, but its generated outputs are not yet present in the GitHub repository.
+2.Confirm availability of DublinED_ExtensionDensity.gpkg before running Question 2.
