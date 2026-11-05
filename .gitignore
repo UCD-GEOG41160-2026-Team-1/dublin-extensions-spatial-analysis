@@ -2,6 +2,10 @@
 data/planning/*.gpkg
 data/boundaries/*.gpkg
 
+#DuckDB files(to big to push)
+outputs/extensions.duckdb
+outputs/extensions.duckdb.wal
+
 # Python
 __pycache__/
 *.py[cod]
