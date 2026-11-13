@@ -29,3 +29,8 @@ Coordinator:Fress-code
 
 1.Question 1 script is available, but its generated outputs are not yet present in the GitHub repository.
 2.Confirm availability of DublinED_ExtensionDensity.gpkg before running Question 2.
+
+## Sprint 1 Review
+2026-11-05
+The question 1 was checked and runs correctly. The extensions.duckdb and the DublinED_ExtensionDensity.gpkg outputs are created and stored in the folder. The map is successfully created and saved in the output folder as well.
+A line was added to the gitignore to avoid the push of the duckdb to Github which is too large.
