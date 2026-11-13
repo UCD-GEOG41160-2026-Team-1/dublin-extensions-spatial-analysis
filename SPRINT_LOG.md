@@ -34,3 +34,11 @@ Coordinator:Fress-code
 2026-11-05
 The question 1 was checked and runs correctly. The extensions.duckdb and the DublinED_ExtensionDensity.gpkg outputs are created and stored in the folder. The map is successfully created and saved in the output folder as well.
 A line was added to the gitignore to avoid the push of the duckdb to Github which is too large.
+
+### Sprint 2 
+Date: 2026-11-10
+
+Checked Q2 outputs and pulled the latest Q1 data for the analysis.
+Computed Getis-Ord Gi* with 9999 permutations and applied FDR correction to identify hotspots and coldspots.
+Merged the LISA script and Gi* code into `Q3_LISA_GiStar.py`, successfully resolving a Git merge conflict.
+Generated the Gi* map and a cross-tabulation to compare LISA clusters with Gi* data.
