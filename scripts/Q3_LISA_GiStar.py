@@ -1,5 +1,4 @@
 """
-
 GEOG41160 Assignment 2, Question 3: Local clusters and hotspots
 Team: team 1
 
