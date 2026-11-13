@@ -2,21 +2,20 @@
 GEOG41160 Assignment 2, Question 3: Local clusters and hotspots
 Team: team 1
 
-ANSWERS:
-
-Q3.1. The Local Moran's I values were calculated for each ED to identify their local
+ANSWERS
+1. The Local Moran's I values were calculated for each ED to identify their local
 spatial autocorrelation. Each ED is then classified into one of the 4 quadrants
 based on the neighbors of the ED. The quadrants are: High-High, Low-High, Low-Low, and High-Low.
 The results show the distribution of EDs across the four quadrants,
 with 47 significant results.14 are classified as High-High, 5 as Low-High,
 27 as Low-Low, and 1 as High-Low. The remaining 115 EDs are not significant.
 
-Q3.2. The false discovery rate correction was applied to the p-values of the Local
+2. The false discovery rate correction was applied to the p-values of the Local
 Moran's I to minise the amout of false postives/significant results.
 No more than 5% was accepted for this work.
 30 EDs remain significant after the correction.
 
-Q3.3. The LISA classes were mapped, with a legend indicating the number of EDs in
+3. The LISA classes were mapped, with a legend indicating the number of EDs in
 each class. This map allow us to visualise the clusters of extension density
 accross the Dublin EDs. As we can see, there is a cluster in the south, with many
 EDs classified as High-High, which means a high extension density ED is surrounded
@@ -24,18 +23,19 @@ by other EDs with high extension density.The west and the North are concentratin
 the Low-Low clusters, which means they don't have high extension density in these EDs.
 The map was saved as LISA_ExtensionDensity_DublinED.png in the output folder.
 
-Q3.4: Getis-Ord Gi* computed with 9999 permutations and a fixed seed (42).
+4. Getis-Ord Gi* computed with 9999 permutations and a fixed seed (42).
 A KNN (k=5) spatial weight matrix was used to capture local variance, with binary weights (transform="B").
 After FDR correction (alpha=0.2), the significant EDs are:
 12 Hotspots (Z > 1.96) and 8 Coldspots (Z < -1.96).
 
-Q3.5: Map saved as GiStar_ExtensionDensity_DublinED.png with a diverging colour scheme.
+5. Map saved as GiStar_ExtensionDensity_DublinED.png with a diverging colour scheme.
 
-Q3.6: Comparison with LISA:
+6. Comparison with LISA:
 Both methods generally agree on the main clusters. According to the cross-tabulation, out of the 14 High-High areas identified by LISA, 11 are successfully captured as Gi* Hotspots.
 Similarly, Gi* captures 7 of the 29 Low-Low areas as Coldspots.
 However, there are some differences. Gi* calculates a local sum, which might mask spatial outliers (e.g., High-Low or Low-High), while LISA effectively identifies them.
 Additionally, LISA used Queen weights while Gi* used KNN (k=5), which restricts the neighborhood and alters local variance."
+
 """
 
 from pathlib import Path
@@ -53,15 +53,34 @@ import matplotlib.pyplot as plt
 from libpysal.weights import KNN
 from esda.getisord import G_Local
 from esda import fdr
+import libpysal
+import esda
+from esda.moran import Moran_Local
 
 #########################################
 ##### SETUP #####
 #########################################
 
-# Define the root folder and output directory using relative paths
 ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
 OUTPUTS = ROOT / "outputs"
 OUTPUTS.mkdir(exist_ok=True)
+
+
+DENSITY_FILE = OUTPUTS / "DublinED_ExtensionDensity.gpkg"
+SEED = 42
+
+# This question runs from the question1 outputs, so this checks that the file exists before proceeding.
+if not DENSITY_FILE.exists():
+    raise FileNotFoundError(
+        f"{DENSITY_FILE} not found: run Q1_ExtensionDensity.py first."
+    )
+eds = gpd.read_file(DENSITY_FILE)
+
+# Inspect dataset to know the datset before analysis
+print(len(eds), "EDs,", eds.crs)
+print(eds.head())
+print(eds.columns)
 
 
 #############################################
@@ -69,8 +88,6 @@ OUTPUTS.mkdir(exist_ok=True)
 #############################################
 
 # Creation of x to hold the extension density values as an array
-# Load the data for LISA calculation
-eds = gpd.read_file(OUTPUTS / "DublinED_ExtensionDensity.gpkg")
 x = eds["extension_density"].values
 
 # Application of the Queen contiguity weight based on the ED boundaries.
@@ -154,6 +171,7 @@ plt.savefig(
 )
 # Show the map
 plt.show()
+
 
 #####################################################################
 ##### 4. Compute Getis-Ord Gi*, classify hotspots and coldspots #####
