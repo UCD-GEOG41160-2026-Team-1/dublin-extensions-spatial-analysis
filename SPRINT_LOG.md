@@ -41,3 +41,11 @@ Checked Q2 outputs and pulled the latest Q1 data for the analysis.
 Computed Getis-Ord Gi* with 9999 permutations and applied FDR correction to identify hotspots and coldspots.
 Merged the LISA script and Gi* code into `Q3_LISA_GiStar.py`, successfully resolving a Git merge conflict.
 Generated the Gi* map and a cross-tabulation to compare LISA clusters with Gi* data.
+
+### Sprint 3
+Date: 2026-11-15
+
+Completed the remaining Task 3 analysis, including Local Moran's I (LISA), local cluster classification, and FDR correction.
+Generated and checked the final LISA cluster map and reviewed the comparison with the Gi* hotspots and coldspots.
+A minor LISA map plotting issue was found during review and fixed.
+Reran `Q3_LISA_GiStar.py` successfully; Task 3 is complete and all maps and tables were generated correctly.

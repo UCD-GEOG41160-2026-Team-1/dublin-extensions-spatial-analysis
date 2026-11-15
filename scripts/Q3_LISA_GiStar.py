@@ -152,11 +152,11 @@ colours = {
 # draw the map
 fig, ax = plt.subplots(figsize=(10, 7.5))
 
-eds.plot(color=eds["quadrant"].map(colours), edgecolor="grey", linewidth=0.3, ax=ax)
+eds.plot(color=eds["lisa_class"].map(colours), edgecolor="grey", linewidth=0.3, ax=ax)
 
 ax.legend(
     handles=[
-        Patch(color=c, label=f"{k} ({(eds['quadrant'] == k).sum()})")
+        Patch(color=c, label=f"{k} ({(eds['lisa_class'] == k).sum()})")
         for k, c in colours.items()
     ],
     loc="lower right",
