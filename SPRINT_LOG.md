@@ -14,9 +14,8 @@ Discussed and assigned initial roles for the upcoming sprints.
 What is next (Sprint 1):
 Begin working on Question 1: Setting up the DuckDB spatial database, importing the data, and calculating extension density by ED.
 
-## Sprint 2
+## Sprint 1
 Date:2026-11-03
-Coordinator:Fress-code
 
 ## Coordinator Responsibilities
 1.Review the progress and outputs from Sprint 1.
